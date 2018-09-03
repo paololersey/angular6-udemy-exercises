@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-element": {
+    "service-worker-angular": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,14 +13,15 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-element",
+            "outputPath": "dist/service-worker-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.json"
             ],
             "styles": [
               "src/styles.css"
@@ -43,25 +44,26 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "serviceWorker": true
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-element:build"
+            "browserTarget": "service-worker-angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-element:build:production"
+              "browserTarget": "service-worker-angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-element:build"
+            "browserTarget": "service-worker-angular:build"
           }
         },
         "test": {
@@ -77,7 +79,8 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.json"
             ]
           }
         },
@@ -95,7 +98,7 @@
         }
       }
     },
-    "angular-element-e2e": {
+    "service-worker-angular-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +106,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-element:serve"
+            "devServerTarget": "service-worker-angular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-element:serve:production"
+              "devServerTarget": "service-worker-angular:serve:production"
             }
           }
         },
@@ -121,47 +124,7 @@
           }
         }
       }
-    },
-    "custom-components": {
-      "root": "projects/custom-components",
-      "sourceRoot": "projects/custom-components/src",
-      "projectType": "library",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/custom-components/tsconfig.lib.json",
-            "project": "projects/custom-components/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "projects/custom-components/ng-package.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/custom-components/src/test.ts",
-            "tsConfig": "projects/custom-components/tsconfig.spec.json",
-            "karmaConfig": "projects/custom-components/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/custom-components/tsconfig.lib.json",
-              "projects/custom-components/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
     }
   },
-  "defaultProject": "angular-element"
+  "defaultProject": "service-worker-angular"
 }

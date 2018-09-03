@@ -1,14 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'div-alert',
+  selector: 'app-alert',
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.css']
 })
-export class AlertStandardComponent implements OnInit {
+export class AlertComponent implements OnInit {
 
   @Input() message: String;
-  
+
   constructor() { }
 
   ngOnInit() {
