@@ -1,0 +1,7 @@
+<app-shopping-edit (ingredientAdded)="onIngredientAdded($event)"></app-shopping-edit>
+<hr>
+<ul class="class-list">
+    <a class="list-group-item" *ngFor="let ingredient of ingredients">
+        {{ingredient.name}} ({{ingredient.amount}})
+    </a>
+</ul>
