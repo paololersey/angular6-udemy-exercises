@@ -16,50 +16,53 @@
     </div>
   </div>
   <hr>
+  <form #f="ngForm" (ngSubmit)="submit()">
   <div class="row">
-    <form #f="ngForm" (ngSubmit)="submit()">
-      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-        <div class="formGroup">
-          <div class="col-md-2"><label>Email:</label></div>
-          <div class="col-md-10">
-            <input name="email" email ngModel #email="ngModel" class="form-control" required /></div>
-          <!-- <input name="email" email [(ngModel)]="email" class="form-control" required /></div> Can be used if no help-block -->
-          <div class="col-md-4">
-            <span class="help-block" *ngIf="!email.valid && email.touched">The mail
-              is not valid</span>
-          </div>
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <div class="formGroup">
+        <div class="col-md-2"><label>Email:</label></div>
+        <div class="col-md-10">
+          <input name="email" email ngModel #email="ngModel" class="form-control" required /></div>
+        <!-- <input name="email" email [(ngModel)]="email" class="form-control" required /></div> Can be used if no help-block -->
+        <div class="col-md-4">
+          <span class="help-block" *ngIf="!email.valid && email.touched">The mail
+            is not valid</span>
         </div>
       </div>
-      <br />
-      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-        <div class="form-group">
-          <div class="col-md-2"><label>Subscription:</label></div>
-          <div class="col-md-10">
-            <select id="subscription" class="form-control" [ngModel]="subscription" name="subscription">
-              <option value="basic">Basic</option>
-              <option selected alue="advanced">Advanced</option>
-              <option value="pro">Pro</option>
-            </select>
-          </div>
+    </div>
+    <br/>
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <div class="form-group">
+        <div class="col-md-2"><label>Subscription:</label></div>
+        <div class="col-md-10">
+          <!-- use 2-way binding to set a default! -->
+          <select class="form-control" [(ngModel)]="subscription" name="subscription" required>
+            <option></option>
+            <option [value]="element.code" *ngFor="let element of subscriptions">
+              {{element.description}}
+            </option>
+          </select>
         </div>
       </div>
-      <br />
-      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-        <div class="formGroup">
-          <div class="col-md-2"><label>Password:</label></div>
-          <div class="col-md-10">
-            <input name="password" ngModel #password="ngModel" class="form-control" required /></div>
-          <div class="col-md-4">
-            <span class="help-block" *ngIf="!password.valid && password.touched">The password
-              is not valid</span>
-          </div>
+    </div>
+    <br/>
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <div class="formGroup">
+        <div class="col-md-2"><label>Password:</label></div>
+        <div class="col-md-10">
+          <input name="password" ngModel #password="ngModel" class="form-control" required /></div>
+        <div class="col-md-4">
+          <span class="help-block" *ngIf="!password.valid && password.touched">The password
+            is not valid</span>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-        <button type="submit" [disabled]="!f.valid || f.pristine" class="btn btn-primary pull-right">Submit</button>
-      </div>
-
-    </form>
+    </div>
   </div>
-
+  <div>&nbsp;</div>
+  <div class="row">
+    <div class="form-group " align="center">
+      <button type="submit" [disabled]="!f.valid || f.pristine" class="btn btn-primary ">Submit</button>
+    </div>
+  </div>
+  </form>
 </div>
