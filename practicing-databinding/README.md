@@ -1,6 +1,6 @@
 # PracticingDatabinding
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+This project was done in order to get fit with 2-way binding (ngModel).
 
 ## Development server
 
