@@ -1,7 +1,7 @@
 <app-shopping-edit (ingredientAdded)="onIngredientAdded($event)"></app-shopping-edit>
 <hr>
 <ul class="class-list">
-    <a class="list-group-item" *ngFor="let ingredient of ingredients">
-        {{ingredient.name}} ({{ingredient.amount}})
+    <a class="list-group-item" *ngFor="let ingredient of ingredients; let i= index" (click)="onEditItem(i)">
+        {{ingredient.name}} ( {{ingredient.amount}} {{ingredient.description}})
     </a>
 </ul>
