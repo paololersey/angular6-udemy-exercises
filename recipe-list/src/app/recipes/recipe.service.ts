@@ -4,16 +4,19 @@ import { Ingredient } from './../shared/ingredient.model';
 import { ShoppingListService } from './../shopping-list/shopping-list.service';
 import { Subject } from 'rxjs';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class RecipeService {
 
     recipesChanged = new Subject<Recipe[]>();
     recipeSelected = new EventEmitter<Recipe>();
+    recipesFetched : EventEmitter<Recipe[]> =  new EventEmitter<Recipe[]>();
     private ingredients: Ingredient[];
 
     constructor(private shoppingListService: ShoppingListService) { }
 
-    private recipes: Recipe[] = [
+    public recipes: Recipe[] = [
         new Recipe('borlenghi', 'Ricetta per 3 persone',
             'https://i0.wp.com/www.acquaementa.com/wp-content/uploads/2016/02/DSC_0136.jpg?w=753&ssl=1',
             [new Ingredient('acqua', 1, 'litro di acqua fredda'), new Ingredient('farina', 250, 'g di tipo 0'),
@@ -29,9 +32,14 @@ export class RecipeService {
 
     ];
 
-    getRecipes() {
-        return this.recipes.slice();
+    setRecipes(recipes: Recipe[]) {
+        this.recipes = recipes;
+        //this.recipesFetched.emit(this.recipes.slice())
+
     }
+    /*getRecipes() {
+        return this.recipes;
+    }*/
 
     getRecipe(index: number) {
         return this.recipes[index];
@@ -43,16 +51,16 @@ export class RecipeService {
 
     addRecipe(recipe: Recipe) {
         this.recipes.push(recipe);
-        this.recipesChanged.next(this.recipes.slice())
+       // this.recipesChanged.next(this.recipes.slice())
     }
 
     updateRecipe(index: number, newRecipe: Recipe) {
         this.recipes[index] = newRecipe;
-        this.recipesChanged.next(this.recipes.slice())
+        //this.recipesChanged.next(this.recipes.slice())
     }
 
     deleteRecipe(index: number) {
         this.recipes.splice(index);
-        this.recipesChanged.next(this.recipes.slice())
+        //this.recipesChanged.next(this.recipes.slice())
     }
 }
