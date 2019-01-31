@@ -19,8 +19,8 @@ export class HeaderComponent implements OnInit {
 
   saveData() {
     this.dataStorageService.storeRecipes().subscribe((response: Response) => {
-      console.log(response)
-    })
+      console.log(response);
+    });
   }
 
   fetchData() {
@@ -33,10 +33,9 @@ export class HeaderComponent implements OnInit {
       }
       return recipes;
     }))
-    .subscribe((recipes: Recipe[]) => {
-
-      this.recipeService.setRecipes(recipes);
-    })
+      .subscribe((recipes: Recipe[]) => {
+        this.recipeService.setRecipes(recipes);
+      });
   }
 
 
