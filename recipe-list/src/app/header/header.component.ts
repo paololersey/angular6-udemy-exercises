@@ -4,6 +4,7 @@ import { Response } from '@angular/http';
 import { Recipe } from '../recipes/recipe.model';
 import { RecipeService } from '../recipes/recipe.service';
 import { map } from 'rxjs/operators';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,8 @@ import { map } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private dataStorageService: DataStorageService, private recipeService: RecipeService) { }
+  constructor(private dataStorageService: DataStorageService,
+    private recipeService: RecipeService, private authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -38,5 +40,8 @@ export class HeaderComponent implements OnInit {
       });
   }
 
+  onLogout() {
+    this.authService.logout();
+  }
 
 }
