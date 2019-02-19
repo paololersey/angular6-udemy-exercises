@@ -6,7 +6,7 @@ export class ShoppingListService {
     ingredientAdded = new EventEmitter<any>();
     ingredientUpdated = new EventEmitter<any>();
     startedEditing = new Subject<number>();
-    private ingredients: Ingredient[] = [new Ingredient('Apples', 5, ''), new Ingredient('Tomatoes',10, '')];
+    public ingredients: Ingredient[] = [new Ingredient('Apples', 5, ''), new Ingredient('Tomatoes',10, '')];
 
 
     getIngredients() {

@@ -92,6 +92,12 @@ export class RecipeEditComponent implements OnInit {
       this.defineData(recipeName, recipeImagePath, recipeDescription, recipeIngredients);*/
     this.router.navigate(['../'], { relativeTo: this.route })
   }
+  
+  getControls() {
+    return (<FormArray>this.recipeForm.get('ingredients')).controls;
+
+  }
+
 }
 function initializeData() {
   let recipeName = '';
