@@ -19,27 +19,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  saveData() {
-    this.dataStorageService.storeRecipes().subscribe((response: Response) => {
-      console.log(response);
-    });
-  }
-
-  fetchData() {
-    this.dataStorageService.getRecipes().pipe(map((response: Response) => {
-      const recipes: Recipe[] = response.json();
-      for (let recipe of recipes) {
-        if (!recipe['ingredients']) {
-          recipe['ingredients'] = [];
-        }
-      }
-      return recipes;
-    }))
-      .subscribe((recipes: Recipe[]) => {
-        this.recipeService.setRecipes(recipes);
-      });
-  }
-
   onLogout() {
     this.authService.logout();
   }

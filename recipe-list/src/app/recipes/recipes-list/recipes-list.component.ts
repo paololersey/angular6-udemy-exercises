@@ -14,7 +14,7 @@ import { map } from 'rxjs/operators';
 export class RecipesListComponent implements OnInit, OnDestroy {
 
 
-  // recipes: Recipe[];
+  recipes: Recipe[];
   // subscription: Subscription;
   constructor(public recipeService: RecipeService, private dataStorageService: DataStorageService,
     private router: Router, private currentRoute: ActivatedRoute) { }
@@ -27,10 +27,11 @@ export class RecipesListComponent implements OnInit, OnDestroy {
        this.recipes = recipeList;
      });
      this.recipes = this.recipeService.getRecipes();*/
+    this.refresh();
   }
 
   selectRecipe(recipe: Recipe) {
-    //this.recipeSelect.emit(recipe);
+    // this.recipeSelect.emit(recipe);
   }
 
   onNewRecipe() {
@@ -39,8 +40,9 @@ export class RecipesListComponent implements OnInit, OnDestroy {
 
   refresh() {
     this.dataStorageService.getRecipes()
-      .pipe(map((response: Response) => {
-        const recipes: Recipe[] = response.json();
+      .pipe(map((recipes: Recipe[]) => {
+        console.log(recipes);
+        // const recipes: Recipe[] = response.json();
         for (let recipe of recipes) {
           if (!recipe['ingredients']) {
             recipe['ingredients'] = [];
@@ -48,10 +50,16 @@ export class RecipesListComponent implements OnInit, OnDestroy {
         }
         return recipes;
       }))
-      .subscribe((recipes: Recipe[]) => {
-
+      .subscribe((recipes) => {
         this.recipeService.setRecipes(recipes);
-      })
+        this.recipes = this.recipeService.getRecipes();
+      });
+  }
+
+  saveData() {
+    this.dataStorageService.storeRecipes(this.recipeService.getRecipes()).subscribe((response: Response) => {
+      console.log(response);
+    });
   }
 
   ngOnDestroy() {

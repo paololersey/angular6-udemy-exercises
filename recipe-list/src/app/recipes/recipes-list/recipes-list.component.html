@@ -5,13 +5,16 @@
   <div class="col-xs-2">
     <button class="btn btn-success" (click)="refresh()">Refresh</button>
   </div>
+  <div class="col-xs-2">
+    <button class="btn btn-success" (click)="saveData()">Persist</button>
+  </div>
 </div>
 <hr>
 <div class="row">
   <div class="col-xs-12">
     <app-recipe-item 
     [recipe] ='recipe'
-     *ngFor="let recipe of recipeService.recipes; let i = index" 
+     *ngFor="let recipe of recipes; let i = index" 
      [index]="i"></app-recipe-item>
   </div>
 </div>

@@ -90,9 +90,9 @@ export class RecipeEditComponent implements OnInit {
   cancel() {
     /*  let { recipeName, recipeImagePath, recipeDescription, recipeIngredients } = initializeData();
       this.defineData(recipeName, recipeImagePath, recipeDescription, recipeIngredients);*/
-    this.router.navigate(['../'], { relativeTo: this.route })
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
-  
+
   getControls() {
     return (<FormArray>this.recipeForm.get('ingredients')).controls;
 
@@ -100,10 +100,10 @@ export class RecipeEditComponent implements OnInit {
 
 }
 function initializeData() {
-  let recipeName = '';
-  let recipeImagePath = '';
-  let recipeDescription = '';
-  let recipeIngredients = new FormArray([]);
+  const recipeName = '';
+  const recipeImagePath = '';
+  const recipeDescription = '';
+  const recipeIngredients = new FormArray([]);
   return { recipeName, recipeImagePath, recipeDescription, recipeIngredients };
 }
 
