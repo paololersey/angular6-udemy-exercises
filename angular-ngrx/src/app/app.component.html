@@ -1,0 +1,19 @@
+<nav class="navbar d-flex">
+  <a class="navbar-brand"
+    routerLink="/">
+    Angular - NGRX / {{ (config$ | async)?.adminName }}
+  </a>
+  <div class="d-flex justify-content-end">
+    <ul class="d-flex navbar-nav flex-row align-items-center">
+      <li class="nav-item">
+        <a routerLink="/users"
+          routerLinkActive="active">Users</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!--<app-users [users]="users$ | async" (userSelected) = "navigateToUser($event)"></app-users>
+-->
+<div class="container app-container">
+  <router-outlet></router-outlet>
+</div>
