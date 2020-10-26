@@ -1,6 +1,6 @@
 # AppReview
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7. It shows how to integrate with sonarqube to make typescript code check, and code coverage with karma report.
 
 ## Development server
 
