@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@angular-devkit/build-ng-packagr": "^0.7.5",
-    "ng-packagr": "^4.1.1"
+    "ng-packagr": "^10.1.1"
   },
   "whitelistedNonPeerDependencies": [
     "."
